@@ -7,4 +7,6 @@ flowchart TD
     C2 --> C3
     C4["4. remplacement de la carte par mermaid"]
     C3 --> C4
+    C5["5. ajout de la saisi et verification des couleurs"]
+    C4 --> C5
 ```
