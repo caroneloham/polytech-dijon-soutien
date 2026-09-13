@@ -1,8 +1,34 @@
 import random
+import os
 
 COULEURS = ["R", "V", "B", "J", "M", "N"]
 TAILLE_CODE = 4
 MAX_TENTATIVES = 12
+
+chemin = os.path.abspath(__file__)
+dossier = os.path.dirname(chemin)
+FICHIER = os.path.join(dossier, ".statistiques")
+
+
+def sauvegarder(parties, total):
+    with open(FICHIER, "w", encoding="utf-8") as fichier:
+        fichier.write(str(parties) + "\n")
+        fichier.write(str(total) + "\n")
+
+
+def charger():
+    if not os.path.exists(FICHIER):
+        return 0, 0
+    try:
+        with open(FICHIER, "r", encoding="utf-8") as fichier:
+            parties = int(fichier.readline())
+            total = int(fichier.readline())
+        if parties >= 0:
+            return parties, total
+    except ValueError:
+        pass
+    print("Statistiques invalides, remise à zéro.")
+    return 0, 0
 
 
 def generer_code():
@@ -66,5 +92,38 @@ def jouer():
     return 0
 
 
+def afficher_stats(parties, total):
+    print("Parties jouées :", parties)
+    print("Score total :", total)
+    print()
+
+
+def menu():
+    parties, total = charger()
+    afficher_stats(parties, total)
+
+    while True:
+        print("1 - Jouer ou rejouer")
+        print("2 - Remettre les statistiques à zéro")
+        print("3 - Quitter")
+        choix = input("Votre choix : ").strip()
+
+        if choix == "3":
+            return
+        elif choix == "2":
+            parties = 0
+            total = 0
+        elif choix == "1":
+            score = jouer()
+            parties += 1
+            total += score
+        else:
+            print("Choix invalide.")
+            continue
+
+        sauvegarder(parties, total)
+        afficher_stats(parties, total)
+
+
 if __name__ == "__main__":
-    jouer()
+    menu()

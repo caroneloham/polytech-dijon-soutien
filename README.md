@@ -11,4 +11,6 @@ flowchart TD
     C4 --> C5
     C6["6. ajout de la partie et du score"]
     C5 --> C6
+    C7["7. ajout des stats et du menu pour rejouer"]
+    C6 --> C7
 ```
