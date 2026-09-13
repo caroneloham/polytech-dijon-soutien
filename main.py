@@ -45,3 +45,26 @@ def verifier_code(code_secret, proposition):
             secret.remove(essai[i])
 
     return correct, partiel
+
+
+def jouer():
+    secret = generer_code()
+    print("Couleurs :", " ".join(COULEURS))
+
+    for tentative in range(1, MAX_TENTATIVES + 1):
+        proposition = saisir_code("Votre combinaison : ")
+        correct, partiel = verifier_code(secret, proposition)
+        print("Correct :", correct, "| Partiel :", partiel)
+        print("Tentative :", tentative, "/", MAX_TENTATIVES)
+
+        if correct == TAILLE_CODE:
+            score = MAX_TENTATIVES - tentative
+            print("Bravo ! Score :", score)
+            return score
+
+    print("Perdu ! Le code était :", "".join(secret))
+    return 0
+
+
+if __name__ == "__main__":
+    jouer()

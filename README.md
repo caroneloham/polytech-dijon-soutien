@@ -9,4 +9,6 @@ flowchart TD
     C3 --> C4
     C5["5. ajout de la saisi et verification des couleurs"]
     C4 --> C5
+    C6["6. ajout de la partie et du score"]
+    C5 --> C6
 ```
