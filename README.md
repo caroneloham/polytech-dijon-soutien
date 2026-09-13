@@ -15,4 +15,6 @@ flowchart TD
     C6 --> C7
     C8["8. preparation des combinaisons avec des boucles"]
     C7 --> C8
+    C9["9. ajout du mode inverse et du duel"]
+    C8 --> C9
 ```

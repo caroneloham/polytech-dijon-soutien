@@ -105,6 +105,39 @@ def preparer_codes():
     return codes
 
 
+def jouer_inverse():
+    print("Couleurs :", " ".join(COULEURS))
+    secret = saisir_code("Choisissez votre code secret : ")
+    possibles = preparer_codes()
+    restants = possibles.copy()
+
+    for tentative in range(1, MAX_TENTATIVES + 1):
+        if random.randint(1, 10) <= 8:
+            proposition = random.choice(possibles)
+        else:
+            proposition = random.choice(restants)
+
+        restants.remove(proposition)
+        correct, partiel = verifier_code(secret, proposition)
+        print("Essai", tentative, ":", "".join(proposition))
+        print("Correct :", correct, "| Partiel :", partiel)
+
+        if correct == TAILLE_CODE:
+            score = MAX_TENTATIVES - tentative
+            print("L'ordinateur a trouvé ! Score :", score)
+            return score
+
+        nouveaux = []
+        for code in possibles:
+            bien, mal = verifier_code(code, proposition)
+            if bien == correct and mal == partiel:
+                nouveaux.append(code)
+        possibles = nouveaux
+
+    print("L'ordinateur a perdu.")
+    return 0
+
+
 def afficher_stats(parties, total):
     print("Parties jouées :", parties)
     print("Score total :", total)
@@ -119,6 +152,7 @@ def menu():
         print("1 - Jouer ou rejouer")
         print("2 - Remettre les statistiques à zéro")
         print("3 - Quitter")
+        print("4 - Duel contre l'ordinateur")
         choix = input("Votre choix : ").strip()
 
         if choix == "3":
@@ -126,8 +160,12 @@ def menu():
         elif choix == "2":
             parties = 0
             total = 0
-        elif choix == "1":
+        elif choix == "1" or choix == "4":
             score = jouer()
+            if choix == "4":
+                score_ordinateur = jouer_inverse()
+                score = score - score_ordinateur
+                print("Score du duel :", score)
             parties += 1
             total += score
         else:
