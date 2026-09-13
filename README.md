@@ -13,4 +13,6 @@ flowchart TD
     C5 --> C6
     C7["7. ajout des stats et du menu pour rejouer"]
     C6 --> C7
+    C8["8. preparation des combinaisons avec des boucles"]
+    C7 --> C8
 ```

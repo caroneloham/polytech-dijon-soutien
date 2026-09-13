@@ -92,6 +92,19 @@ def jouer():
     return 0
 
 
+def preparer_codes():
+    codes = [[]]
+    for position in range(TAILLE_CODE):
+        nouveaux = []
+        for code in codes:
+            for couleur in COULEURS:
+                nouveau_code = code.copy()
+                nouveau_code.append(couleur)
+                nouveaux.append(nouveau_code)
+        codes = nouveaux
+    return codes
+
+
 def afficher_stats(parties, total):
     print("Parties jouées :", parties)
     print("Score total :", total)
