@@ -1,3 +1,21 @@
+#Gestion de la librairie : Pygame (pour les flemmard qui font pas pip install 
+import subprocess
+import sys
+
+try:
+    import pygame
+except ModuleNotFoundError as erreur:
+    if erreur.name != "pygame":
+        raise
+
+    print("Installation de pygame...")
+    subprocess.run(
+        [sys.executable, "-m", "pip", "install", "pygame"],
+        check=True
+    )
+    print("Installation terminée. Relance le programme.")
+    sys.exit()
+
 import pygame
 import main
 
