@@ -2,6 +2,8 @@
 
 Jeu de Mastermind réalisé en Python.
 
+![Plateau de jeu Mastermind](img/mastermind.jpg)
+
 ## Règles
 
 Trouver un code de 4 couleurs en 12 essais maximum.
