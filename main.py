@@ -104,6 +104,7 @@ def preparer_codes():
     return codes
 
 
+#code inverse
 def jouer_inverse():
     print("Couleurs :", " ".join(COULEURS))
     secret = saisir_code("Choisissez votre code secret : ")
