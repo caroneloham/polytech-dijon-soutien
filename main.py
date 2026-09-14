@@ -1,7 +1,5 @@
 import random
 import os
-#Ne marche que sur windows du a la lib OS qui utilise les fonction du syteme windows pour gerer les fichier a la place de PATH lib je préfére)
-print("ne marche que sur windows du a la lib OS qui utilise les fonction du syteme windows")
 COULEURS = ["R", "V", "B", "J", "M", "N"]
 TAILLE_CODE = 4
 MAX_TENTATIVES = 12
