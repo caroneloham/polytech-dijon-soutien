@@ -2,7 +2,11 @@
 
 Jeu de Mastermind réalisé en Python.
 
-![Plateau de jeu Mastermind](img/mastermind.jpg)
+<p align="center">
+  <img src="img/plateau-mastermind.jpg"
+       alt="Plateau de jeu Mastermind"
+       width="350">
+</p>
 
 ## Règles
 
